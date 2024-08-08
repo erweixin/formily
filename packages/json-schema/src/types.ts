@@ -3,6 +3,7 @@ import {
   GeneralField,
   FormPathPattern,
 } from '@formily/core'
+import { InputProps, ModalProps, SelectProps } from 'antd'
 export type SchemaEnum<Message> = Array<
   | string
   | number
@@ -23,26 +24,15 @@ export type SchemaTypes =
   | (string & {})
 
 export type SchemaProperties<
-  Decorator,
-  Component,
-  DecoratorProps,
-  ComponentProps,
+  Decorator extends DecoratorNames,
+  Component extends ComponentNames,
   Pattern,
   Display,
   Validator,
   Message
 > = Record<
   string,
-  ISchema<
-    Decorator,
-    Component,
-    DecoratorProps,
-    ComponentProps,
-    Pattern,
-    Display,
-    Validator,
-    Message
-  >
+  ISchema<Decorator, Component, Pattern, Display, Validator, Message>
 >
 
 export type SchemaPatch = (schema: ISchema) => ISchema
@@ -95,31 +85,18 @@ export type SchemaReactions<Field = any> =
   | SchemaReaction<Field>
   | SchemaReaction<Field>[]
 
-export type SchemaItems<
-  Decorator,
-  Component,
-  DecoratorProps,
-  ComponentProps,
-  Pattern,
-  Display,
-  Validator,
-  Message
-> =
-  | ISchema<
-      Decorator,
-      Component,
-      DecoratorProps,
-      ComponentProps,
+export type SchemaItems<Pattern, Display, Validator, Message> =
+  | Convert<
+      DecoratorNames,
+      ComponentNames,
       Pattern,
       Display,
       Validator,
       Message
     >
-  | ISchema<
-      Decorator,
-      Component,
-      DecoratorProps,
-      ComponentProps,
+  | Convert<
+      DecoratorNames,
+      ComponentNames,
       Pattern,
       Display,
       Validator,
@@ -154,14 +131,27 @@ export type Stringify<P extends { [key: string]: any }> = {
   /**
    * Use `string & {}` instead of string to keep Literal Type for ISchema#component and ISchema#decorator
    */
-  [key in keyof P]?: P[key] | (string & {})
+  [key in keyof P]?: P[key]
 }
 
+export type ComponentPropsMap = {
+  Input: InputProps
+  Select: SelectProps
+  'ArrayCards.Addition': {
+    title?: string
+  }
+}
+
+export type DecoratorPropsMap = {
+  Modal: ModalProps
+}
+
+export type ComponentNames = keyof ComponentPropsMap
+export type DecoratorNames = keyof DecoratorPropsMap
+
 export type ISchema<
-  Decorator = any,
-  Component = any,
-  DecoratorProps = any,
-  ComponentProps = any,
+  Decorator extends DecoratorNames = DecoratorNames,
+  Component extends ComponentNames = ComponentNames,
   Pattern = any,
   Display = any,
   Validator = any,
@@ -196,65 +186,48 @@ export type ISchema<
   $ref?: string
   $namespace?: string
   /** nested json schema spec **/
-  definitions?: SchemaProperties<
-    Decorator,
-    Component,
-    DecoratorProps,
-    ComponentProps,
+  definitions?: ConvertSchemaProperties<
+    DecoratorNames,
+    ComponentNames,
     Pattern,
     Display,
     Validator,
     Message
   >
-  properties?: SchemaProperties<
-    Decorator,
-    Component,
-    DecoratorProps,
-    ComponentProps,
+  properties?: ConvertSchemaProperties<
+    DecoratorNames,
+    ComponentNames,
     Pattern,
     Display,
     Validator,
     Message
   >
-  items?: SchemaItems<
-    Decorator,
-    Component,
-    DecoratorProps,
-    ComponentProps,
+  items?: SchemaItems<Pattern, Display, Validator, Message>
+  additionalItems?: Convert<
+    DecoratorNames,
+    ComponentNames,
     Pattern,
     Display,
     Validator,
-    Message
-  >
-  additionalItems?: ISchema<
-    Decorator,
-    Component,
-    DecoratorProps,
-    ComponentProps,
-    Pattern,
-    Display,
-    Validator,
-    Message
+    Message,
+    ReactionField
   >
   patternProperties?: SchemaProperties<
     Decorator,
     Component,
-    DecoratorProps,
-    ComponentProps,
     Pattern,
     Display,
     Validator,
     Message
   >
-  additionalProperties?: ISchema<
-    Decorator,
-    Component,
-    DecoratorProps,
-    ComponentProps,
+  additionalProperties?: Convert<
+    DecoratorNames,
+    ComponentNames,
     Pattern,
     Display,
     Validator,
-    Message
+    Message,
+    ReactionField
   >
 
   ['x-value']?: any
@@ -268,13 +241,13 @@ export type ISchema<
   //校验器
   ['x-validator']?: Validator
   //装饰器
-  ['x-decorator']?: Decorator | (string & {}) | ((...args: any[]) => any)
+  ['x-decorator']?: Decorator
   //装饰器属性
-  ['x-decorator-props']?: DecoratorProps
+  ['x-decorator-props']?: DecoratorPropsMap[Decorator]
   //组件
-  ['x-component']?: Component | (string & {}) | ((...args: any[]) => any)
+  ['x-component']?: Component
   //组件属性
-  ['x-component-props']?: ComponentProps
+  ['x-component-props']?: ComponentPropsMap[Component]
   //组件响应器
   ['x-reactions']?: SchemaReactions<ReactionField>
   //内容
@@ -298,3 +271,98 @@ export type ISchema<
 
   [key: `x-${string | number}` | symbol]: any
 }>
+
+type Convert<
+  Decorator extends DecoratorNames,
+  Component extends ComponentNames,
+  Pattern,
+  Display,
+  Validator,
+  Message,
+  ReactionField = any
+> = Component extends any
+  ? Decorator extends any
+    ? ISchema<
+        Decorator,
+        Component,
+        Pattern,
+        Display,
+        Validator,
+        Message,
+        ReactionField
+      >
+    : never
+  : never
+
+type ConvertSchemaProperties<
+  Decorator extends DecoratorNames,
+  T extends ComponentNames,
+  Pattern,
+  Display,
+  Validator,
+  Message
+> = T extends any
+  ? Decorator extends any
+    ? SchemaProperties<Decorator, T, Pattern, Display, Validator, Message>
+    : never
+  : never
+
+type MyISchema<
+  Pattern = any,
+  Display = any,
+  Validator = any,
+  Message = any,
+  ReactionField = any
+> = Convert<
+  DecoratorNames,
+  ComponentNames,
+  Pattern,
+  Display,
+  Validator,
+  Message,
+  ReactionField
+>
+
+const test: MyISchema = {
+  'x-component': 'Input',
+  'x-component-props': {
+    placeholder: '',
+  },
+  'x-decorator': 'Modal',
+  properties: {
+    a: {
+      'x-component': 'Input',
+      'x-component-props': {
+        placeholder: '',
+      },
+      'x-decorator': 'Modal',
+      'x-decorator-props': {
+        title: 132,
+      },
+      items: {
+        type: 'void',
+        properties: {
+          a: {
+            'x-component': 'ArrayCards.Addition',
+            'x-component-props': {
+              title: 'sss',
+            },
+          },
+        },
+      },
+      properties: {
+        s: {
+          'x-decorator': 'Modal',
+          'x-component': 'Input',
+          'x-component-props': {
+            // options: [],
+            placeholder: '',
+          },
+        },
+      },
+    },
+  },
+}
+
+// eslint-disable-next-line no-console
+console.log(test)
