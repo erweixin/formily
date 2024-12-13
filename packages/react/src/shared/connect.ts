@@ -75,7 +75,7 @@ export function connect<T extends JSXComponent>(
     return mapper(target)
   }, target)
 
-  const Destination = React.forwardRef<T>(
+  const Destination = React.forwardRef(
     (props: Partial<React.ComponentProps<T>>, ref) => {
       return React.createElement(Target, { ...props, ref })
     }

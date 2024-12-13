@@ -31,7 +31,6 @@
     "test:next": "jest packages/next/",
     "test:watch": "jest --watch",
     "test:prod": "jest --coverage --silent",
-    "preversion": "pnpm install --ignore-engines && git add -A && npm run build && npm run lint && npm run test",
     "version:alpha": "pnpm version prerelease --preid=alpha",
     "version:beta": "pnpm version prerelease --preid beta",
     "version:rc": "pnpm version prerelease --preid rc",
@@ -186,5 +185,11 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.0.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "18.0.0",
+      "react-dom": "18.0.0"
+    }
   }
 }
