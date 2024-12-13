@@ -6,6 +6,7 @@ import { defineComponent, ref } from 'vue-demi'
 import { stylePrefix } from '../__builtins__/configs'
 
 import type { Tabs as TabsProps } from 'element-ui'
+import { isFn } from '@formily/shared'
 
 export const ArrayTabs = observer(
   defineComponent<TabsProps>({
@@ -130,11 +131,15 @@ export const ArrayTabs = observer(
               },
               'tab-remove': (target) => {
                 onEdit(target, 'remove')
-                listeners?.['tab-remove']?.(target)
+                if (isFn(listeners?.['tab-remove'])) {
+                  listeners?.['tab-remove']?.(target)
+                }
               },
               'tab-add': () => {
                 onEdit(null, 'add')
-                listeners?.['tab-add']?.()
+                if (isFn(listeners?.['tab-add'])) {
+                  listeners?.['tab-add']?.()
+                }
               },
             },
           },

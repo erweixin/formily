@@ -24,8 +24,8 @@
     "build": "rimraf -rf lib esm dist && npm run create:style && npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:style",
     "create:style": "ts-node create-style",
     "build:style": "ts-node build-style",
-    "build:cjs": "ttsc  --declaration",
-    "build:esm": "ttsc --declaration --module es2015 --outDir esm",
+    "build:cjs": "tsc  --declaration",
+    "build:esm": "tsc --declaration --module es2015 --outDir esm",
     "build:umd": "rollup --config",
     "build:docs": "vuepress build docs"
   },
@@ -41,7 +41,7 @@
     "sass": "^1.34.1",
     "ts-import-plugin": "^2.0.0",
     "ttypescript": "^1.5.15",
-    "vue": "^2.6.0",
+    "vue": "2.6.0",
     "vuepress": "^1.8.2",
     "vuepress-plugin-typescript": "^0.3.1"
   },

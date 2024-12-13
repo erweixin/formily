@@ -5,6 +5,7 @@ import { defineComponent } from 'vue-demi'
 
 import type { Button as ElButtonProps } from 'element-ui'
 import { Button as ElButton } from 'element-ui'
+import { isFn } from '@formily/shared'
 
 export interface ISubmitProps extends ElButtonProps {
   onClick?: (e: MouseEvent) => any
@@ -42,7 +43,7 @@ export const Submit = observer(
             on: {
               ...listeners,
               click: (e: any) => {
-                if (onClick) {
+                if (onClick && isFn(onClick)) {
                   if (onClick(e) === false) return
                 }
                 if (onSubmit) {

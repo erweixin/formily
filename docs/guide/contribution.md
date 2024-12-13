@@ -77,35 +77,35 @@ $ yarn start
 Core project documentation
 
 ```bash
-$ yarn workspace @formily/core start
+$ pnpm --filter @formily/core start
 ```
 
 React project documentation
 
 ```bash
-$ yarn workspace @formily/react start
+$ pnpm --filter @formily/react start
 ```
 
 Vue project documentation
 
 ```bash
-$ yarn workspace @formily/vue start
+$ pnpm --filter @formily/vue start
 ```
 
 Antd project documentation
 
 ```bash
-$ yarn workspace @formily/antd start
+$ pnpm --filter @formily/antd start
 ```
 
 Fusion project documentation
 
 ```bash
-$ yarn workspace @formily/next start
+$ pnpm --filter @formily/next start
 ```
 
 Reactive project documentation
 
 ```bash
-$ yarn workspace @formily/reactive start
+$ pnpm --filter @formily/reactive start
 ```

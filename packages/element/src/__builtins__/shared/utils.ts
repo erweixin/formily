@@ -43,7 +43,7 @@ export function composeExport<T0 extends {}, T1 extends {}>(
  * @returns
  */
 export function useCompatRef(refs?: {
-  [key: string]: Vue | Element | Vue[] | Element[]
+  [key: string]: any | Element | any[] | Element[]
 }) {
   const elRef = ref(null)
   const elRefBinder = Math.random().toString(36).slice(-8)

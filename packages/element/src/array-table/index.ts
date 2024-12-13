@@ -194,6 +194,7 @@ const getArrayTableColumns = (
             }
       }
 
+      //@ts-ignore
       return buf.concat({
         label: title,
         ...props,
@@ -591,7 +592,7 @@ const ArrayAddition = defineComponent({
       if (total === (totalPage - 1) * pageSize + 1 && isFn(changePage)) {
         changePage(totalPage)
       }
-      if (onClick) onClick(e)
+      if (onClick && isFn(onClick)) onClick(e)
     }
     return () => {
       return h(

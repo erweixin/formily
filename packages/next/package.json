@@ -33,13 +33,13 @@
     "build": "rimraf -rf lib esm dist && npm run create:style && npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:style",
     "create:style": "ts-node create-style",
     "build:style": "ts-node build-style",
-    "build:cjs": "tsc --project tsconfig.build.json",
-    "build:esm": "tsc --project tsconfig.build.json --module es2015 --outDir esm",
-    "build:umd": "rollup --config",
+    "build:cjs": "tsc --project tsconfig.build.json --noEmit",
+    "build:esm": "tsc --project tsconfig.build.json --module es2015 --outDir esm --noEmit",
+    "build:umd": "rollup --config --noEmit",
     "build:docs": "dumi build"
   },
   "peerDependencies": {
-    "@alifd/next": "^1.19.0",
+    "@alifd/next": "1.25.34",
     "@types/react": ">=16.8.0",
     "@types/react-dom": ">=16.8.0",
     "react": ">=16.8.0",

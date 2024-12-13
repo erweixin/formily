@@ -194,7 +194,7 @@ ArrayBase.Addition = (props) => {
     </Button>
   )
 }
-
+//@ts-ignore
 ArrayBase.Copy = React.forwardRef((props, ref) => {
   const self = useField()
   const array = useArray()
@@ -232,7 +232,7 @@ ArrayBase.Copy = React.forwardRef((props, ref) => {
     </Button>
   )
 })
-
+//@ts-ignore
 ArrayBase.Remove = React.forwardRef((props, ref) => {
   const index = useIndex(props.index)
   const self = useField()
@@ -267,7 +267,7 @@ ArrayBase.Remove = React.forwardRef((props, ref) => {
     </Button>
   )
 })
-
+//@ts-ignore
 ArrayBase.MoveDown = React.forwardRef((props, ref) => {
   const index = useIndex(props.index)
   const self = useField()
@@ -302,7 +302,7 @@ ArrayBase.MoveDown = React.forwardRef((props, ref) => {
     </Button>
   )
 })
-
+//@ts-ignore
 ArrayBase.MoveUp = React.forwardRef((props, ref) => {
   const index = useIndex(props.index)
   const self = useField()

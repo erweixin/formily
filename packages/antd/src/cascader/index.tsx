@@ -4,7 +4,7 @@ import { Cascader as AntdCascader } from 'antd'
 import { PreviewText } from '../preview-text'
 import { LoadingOutlined } from '@ant-design/icons'
 
-export const Cascader = connect(
+export const Cascader: any = connect(
   AntdCascader,
   mapProps(
     {

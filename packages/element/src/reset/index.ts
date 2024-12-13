@@ -5,6 +5,7 @@ import { defineComponent } from 'vue-demi'
 
 import type { Button as IElButton } from 'element-ui'
 import { Button as ElButton } from 'element-ui'
+import { isFn } from '@formily/shared'
 
 export type ResetProps = IFieldResetOptions & IElButton
 
@@ -33,7 +34,7 @@ export const Reset = observer(
             on: {
               ...listeners,
               click: (e: any) => {
-                if (listeners?.click) {
+                if (listeners?.click && isFn(listeners.click)) {
                   if (listeners.click(e) === false) return
                 }
                 form

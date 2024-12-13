@@ -9,7 +9,7 @@
     "devtools/*"
   ],
   "scripts": {
-    "build": "rimraf -rf packages/*/{lib,dist,esm} && lerna run build",
+    "build": "rimraf -rf packages/*/{lib,dist,esm} && pnpm run -r build",
     "build:docs": "dumi build",
     "start": "dumi dev",
     "test": "jest --coverage",
@@ -31,15 +31,15 @@
     "test:next": "jest packages/next/",
     "test:watch": "jest --watch",
     "test:prod": "jest --coverage --silent",
-    "preversion": "yarn install --ignore-engines && git add -A && npm run build && npm run lint && npm run test",
-    "version:alpha": "lerna version prerelease --preid alpha",
-    "version:beta": "lerna version prerelease --preid beta",
-    "version:rc": "lerna version prerelease --preid rc",
-    "version:patch": "lerna version patch",
-    "version:minor": "lerna version minor",
-    "version:preminor": "lerna version preminor --preid beta",
-    "version:major": "lerna version major",
-    "release:force": "lerna publish from-package --yes",
+    "preversion": "pnpm install --ignore-engines && git add -A && npm run build && npm run lint && npm run test",
+    "version:alpha": "pnpm version prerelease --preid=alpha",
+    "version:beta": "pnpm version prerelease --preid beta",
+    "version:rc": "pnpm version prerelease --preid rc",
+    "version:patch": "pnpm version patch",
+    "version:minor": "pnpm version minor",
+    "version:preminor": "pnpm version preminor --preid beta",
+    "version:major": "pnpm version major",
+    "release:force": "pnpm publish from-package --yes",
     "lint": "eslint ."
   },
   "resolutions": {
@@ -47,8 +47,7 @@
     "@types/react-dom": "^18.0.0",
     "@mapbox/hast-util-to-jsx": "~1.0.0",
     "yargs": "^16.x",
-    "commander": "^6.x",
-    "ttypescript": "1.5.15"
+    "commander": "^6.x"
   },
   "devDependencies": {
     "@alifd/next": "^1.19.1",
@@ -150,8 +149,8 @@
     "ts-import-plugin": "1.6.1",
     "ts-jest": "^26.0.0",
     "ts-loader": "^7.0.4",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.1.5",
+    "ts-node": "10.9.2",
+    "typescript": "5.7.2",
     "vue-eslint-parser": "^7.1.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",

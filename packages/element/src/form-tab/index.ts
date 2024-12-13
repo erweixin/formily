@@ -14,6 +14,7 @@ import { stylePrefix } from '../__builtins__/configs'
 
 import type { TabPane as TabPaneProps, Tabs as TabsProps } from 'element-ui'
 import { composeExport } from '../__builtins__/shared'
+import { isFn } from '@formily/shared'
 
 export interface IFormTab {
   activeKey: string
@@ -135,7 +136,9 @@ const FormTabInner = observer(
             on: {
               ...listeners,
               input: (key) => {
-                listeners.input?.(key)
+                if (isFn(listeners.input)) {
+                  listeners.input?.(key)
+                }
                 formTab.setActiveKey?.(key)
               },
             },

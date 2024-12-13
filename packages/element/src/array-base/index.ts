@@ -1,5 +1,5 @@
 import { ArrayField } from '@formily/core'
-import { clone, isValid, uid } from '@formily/shared'
+import { clone, isFn, isValid, uid } from '@formily/shared'
 import {
   ExpressionScope,
   Fragment,
@@ -269,7 +269,7 @@ const ArrayBaseAddition = defineComponent({
                 array?.field?.value.push(defaultValue)
                 array.listeners?.add?.(array?.field?.value?.value?.length - 1)
               }
-              if (listeners.click) {
+              if (listeners.click && isFn(listeners.click)) {
                 listeners.click(e)
               }
             },
@@ -315,7 +315,7 @@ const ArrayBaseRemove = defineComponent<
               base?.field.value.remove(indexRef.value as number)
               base?.listeners?.remove?.(indexRef.value as number)
 
-              if (listeners.click) {
+              if (listeners.click && isFn(listeners.click)) {
                 listeners.click(e)
               }
             },
@@ -365,7 +365,7 @@ const ArrayBaseMoveDown = defineComponent<
               base?.field.value.moveDown(indexRef.value as number)
               base?.listeners?.moveDown?.(indexRef.value as number)
 
-              if (listeners.click) {
+              if (listeners.click && isFn(listeners.click)) {
                 listeners.click(e)
               }
             },
@@ -415,7 +415,7 @@ const ArrayBaseMoveUp = defineComponent<
               base?.field.value.moveUp(indexRef.value as number)
               base?.listeners?.moveUp?.(indexRef.value as number)
 
-              if (listeners.click) {
+              if (listeners.click && isFn(listeners.click)) {
                 listeners.click(e)
               }
             },

@@ -5,7 +5,7 @@ import { observer, useField } from '@formily/react'
 import { InputProps } from 'antd/lib/input'
 import { InputNumberProps } from 'antd/lib/input-number'
 import { SelectProps } from 'antd/lib/select'
-import { TreeSelectProps } from 'antd/lib/tree-select'
+import type { TreeSelectProps } from 'antd/lib/tree-select'
 import { CascaderProps, DefaultOptionType } from 'antd/lib/cascader'
 import {
   DatePickerProps,
@@ -320,6 +320,6 @@ Text.Placeholder = Placeholder
 Text.usePlaceholder = usePlaceholder
 Text.NumberPicker = NumberPicker
 
-export const PreviewText = Text
+export const PreviewText: any = Text
 
 export default PreviewText

@@ -70,7 +70,8 @@
     "@formily/reactive-react": "2.3.2",
     "@formily/shared": "2.3.2",
     "classnames": "^2.2.6",
-    "react-sticky-box": "^0.9.3"
+    "react-sticky-box": "^0.9.3",
+    "tslib": "^2.2.0"
   },
   "publishConfig": {
     "access": "public"
