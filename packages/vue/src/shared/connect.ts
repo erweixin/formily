@@ -105,6 +105,7 @@ export function connect<T extends VueComponent>(
   if (isVue2) {
     const functionalComponent = defineComponent({
       functional: true,
+      // @ts-ignore
       name: target.name,
       render(h, context) {
         return h(Component, context.data, context.children)

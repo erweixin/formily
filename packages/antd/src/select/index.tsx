@@ -5,9 +5,7 @@ import { SelectProps } from 'antd/lib/select'
 import { PreviewText } from '../preview-text'
 import { LoadingOutlined } from '@ant-design/icons'
 
-export const Select: React.ForwardRefExoticComponent<
-  React.RefAttributes<typeof AntdSelect>
-> = connect(
+export const Select: ReactFC<SelectProps<any, any>> = connect(
   AntdSelect,
   mapProps(
     {
