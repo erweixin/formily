@@ -50,13 +50,13 @@ const mapDateFormat = function () {
     }
   }
 }
-
+//@ts-ignore
 export const DatePicker: ComposedDatePicker = connect(
   AntdDatePicker,
   mapProps(mapDateFormat()),
   mapReadPretty(PreviewText.DatePicker)
 )
-
+//@ts-ignore
 DatePicker.RangePicker = connect(
   AntdDatePicker.RangePicker,
   mapProps(mapDateFormat()),

@@ -155,7 +155,9 @@
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "tslib": "2.8.1",
+    "moment": ">=2.24.0"
   },
   "repository": {
     "type": "git",

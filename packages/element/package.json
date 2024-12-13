@@ -54,6 +54,8 @@
     "@formily/shared": "2.3.2",
     "@formily/vue": "2.3.2",
     "portal-vue": "^2.1.7",
+    "resize-observer-polyfill": "^1.5.1",
+    "tslib": "2.8.1",
     "vue-demi": ">=0.13.6",
     "vue-slicksort": "^1.2.0"
   },

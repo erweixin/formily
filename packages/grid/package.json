@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "@formily/reactive": "2.3.2",
-    "@juggle/resize-observer": "^3.3.1"
+    "@juggle/resize-observer": "^3.3.1",
+    "tslib": "2.8.1"
   },
   "publishConfig": {
     "access": "public"
