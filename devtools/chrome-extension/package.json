@@ -21,8 +21,8 @@
     "start": "webpack-dev-server --config config/webpack.dev.ts"
   },
   "dependencies": {
-    "@formily/core": "2.3.2",
-    "@formily/shared": "2.3.2",
+    "@formily/core": "workspace:*",
+    "@formily/shared": "workspace:*",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-json-view": "^1.19.1",

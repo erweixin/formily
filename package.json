@@ -1,15 +1,13 @@
 {
   "name": "root",
+  "version": "2.3.2",
   "private": true,
-  "devEngines": {
-    "node": "8.x || 9.x || 10.x || 11.x"
-  },
   "workspaces": [
     "packages/*",
     "devtools/*"
   ],
   "scripts": {
-    "build": "rimraf -rf packages/*/{lib,dist,esm} && pnpm run -r build",
+    "build": "rimraf -rf packages/*/{lib,dist,esm} && pnpm run -r build --filter=./packages/antd",
     "build:docs": "dumi build",
     "start": "dumi dev",
     "test": "jest --coverage",
@@ -137,7 +135,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.35.0",
+    "rollup-plugin-typescript2": "^0.36.0",
     "semver": "^7.3.5",
     "semver-regex": "^3.1.3",
     "showdown": "^1.9.1",

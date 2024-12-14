@@ -32,9 +32,9 @@
     "dumi": "^1.1.0-rc.8"
   },
   "dependencies": {
-    "@formily/reactive": "2.3.2",
-    "@formily/shared": "2.3.2",
-    "@formily/validator": "2.3.2",
+    "@formily/reactive": "workspace:*",
+    "@formily/shared": "workspace:*",
+    "@formily/validator": "workspace:*",
     "tslib": "2.8.1"
   },
   "publishConfig": {

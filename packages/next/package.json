@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "dumi dev",
-    "build": "rimraf -rf lib esm dist && npm run create:style && npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:style",
+    "build": "rimraf -rf lib esm dist && npm run build:cjs && npm run build:esm && npm run build:umd",
     "create:style": "ts-node create-style",
     "build:style": "ts-node build-style",
     "build:cjs": "tsc --project tsconfig.build.json --noEmit",
@@ -59,13 +59,13 @@
     "dumi": "^1.1.0-rc.8"
   },
   "dependencies": {
-    "@formily/core": "2.3.2",
-    "@formily/grid": "2.3.2",
-    "@formily/json-schema": "2.3.2",
-    "@formily/react": "2.3.2",
-    "@formily/reactive": "2.3.2",
-    "@formily/reactive-react": "2.3.2",
-    "@formily/shared": "2.3.2",
+    "@formily/core": "workspace:*",
+    "@formily/grid": "workspace:*",
+    "@formily/json-schema": "workspace:*",
+    "@formily/react": "workspace:*",
+    "@formily/reactive": "workspace:*",
+    "@formily/reactive-react": "workspace:*",
+    "@formily/shared": "workspace:*",
     "classnames": "^2.2.6",
     "react-sortable-hoc": "^1.11.0",
     "react-sticky-box": "^0.9.3"

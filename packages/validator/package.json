@@ -27,7 +27,7 @@
     "build:umd": "rollup --config"
   },
   "dependencies": {
-    "@formily/shared": "2.3.2"
+    "@formily/shared": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

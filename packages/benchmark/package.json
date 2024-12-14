@@ -40,8 +40,8 @@
     "react-is": "next"
   },
   "dependencies": {
-    "@formily/reactive": "2.3.2",
-    "@formily/reactive-react": "2.3.2",
+    "@formily/reactive": "workspace:*",
+    "@formily/reactive-react": "workspace:*",
     "react": "next",
     "react-dom": "next",
     "react-is": "next"

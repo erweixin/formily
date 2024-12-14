@@ -33,7 +33,7 @@
     "vue": "^2.6.12"
   },
   "dependencies": {
-    "@formily/reactive": "2.3.2",
+    "@formily/reactive": "workspace:*",
     "vue-demi": ">=0.13.6"
   },
   "peerDependencies": {
