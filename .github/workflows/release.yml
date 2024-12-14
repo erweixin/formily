@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - formily_next
+      - feat-update
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -12,20 +12,19 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 0
-          ref: formily_next
+          ref: feat-update
       - uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 20
           registry-url: https://registry.npmjs.org/
       - run: |
-          yarn -v
-          yarn --ignore-engines
-          yarn build
-          yarn test:prod
+          pnpm i
+          pnpm build
+          pnpm test:prod
         env:
           NODE_OPTIONS: --max_old_space_size=4096
           REGISTRY: https://registry.npmjs.org
-      - uses: janrywang/github-tag-release@main
+      - uses: erweixin/github-tag-release@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           dingtalk_tokens: ${{secrets.DING_TALK_TOKENS}}
