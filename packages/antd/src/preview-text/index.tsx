@@ -310,7 +310,7 @@ const Text = (props: React.PropsWithChildren<any>) => {
 
 Text.Input = Input
 Text.Select = Select
-Text.TreeSelect = TreeSelect
+Text.TreeSelect = TreeSelect as any
 Text.Cascader = Cascader
 Text.DatePicker = DatePicker
 Text.DateRangePicker = DateRangePicker
@@ -320,6 +320,6 @@ Text.Placeholder = Placeholder
 Text.usePlaceholder = usePlaceholder
 Text.NumberPicker = NumberPicker
 
-export const PreviewText: any = Text
+export const PreviewText = Text
 
 export default PreviewText

@@ -1,10 +1,11 @@
 import React from 'react'
-import { connect, mapReadPretty, mapProps } from '@formily/react'
+import { connect, mapReadPretty, mapProps, ReactFC } from '@formily/react'
 import { Cascader as AntdCascader } from 'antd'
+import { BaseOptionType, CascaderProps } from 'antd/lib/cascader'
 import { PreviewText } from '../preview-text'
 import { LoadingOutlined } from '@ant-design/icons'
 
-export const Cascader: any = connect(
+export const Cascader: ReactFC<CascaderProps<BaseOptionType>> = connect(
   AntdCascader,
   mapProps(
     {

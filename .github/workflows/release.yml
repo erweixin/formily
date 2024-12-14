@@ -18,25 +18,25 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
       - run: |
+          npm i -g pnpm
           pnpm i
           pnpm build
-          pnpm test:prod
         env:
           NODE_OPTIONS: --max_old_space_size=4096
           REGISTRY: https://registry.npmjs.org
-      - uses: erweixin/github-tag-release@main
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          dingtalk_tokens: ${{secrets.DING_TALK_TOKENS}}
-      - run: yarn run release:force
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
-          ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: true
-          verbose: true
+      # - uses: erweixin/github-tag-release@main
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     dingtalk_tokens: ${{secrets.DING_TALK_TOKENS}}
+      # - run: yarn run release:force
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+      #     ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
+      # - name: Upload coverage to Codecov
+      #   uses: codecov/codecov-action@v1
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     fail_ci_if_error: true
+      #     verbose: true

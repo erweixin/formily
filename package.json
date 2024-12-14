@@ -7,7 +7,7 @@
     "devtools/*"
   ],
   "scripts": {
-    "build": "rimraf -rf packages/*/{lib,dist,esm} && pnpm run -r build --filter=./packages/antd",
+    "build": "rimraf -rf packages/*/{lib,dist,esm} && pnpm run -r build",
     "build:docs": "dumi build",
     "start": "dumi dev",
     "test": "jest --coverage",
@@ -154,7 +154,8 @@
     "webpack-dev-server": "^3.10.1",
     "yup": "^1.4.0",
     "tslib": "2.8.1",
-    "moment": ">=2.24.0"
+    "moment": ">=2.24.0",
+    "vue": "2.6.0"
   },
   "repository": {
     "type": "git",
@@ -187,7 +188,8 @@
   "pnpm": {
     "overrides": {
       "react": "18.0.0",
-      "react-dom": "18.0.0"
+      "react-dom": "18.0.0",
+      "vue@2": "2.6.0"
     }
   }
 }

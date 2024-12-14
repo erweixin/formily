@@ -71,8 +71,7 @@
     "@formily/reactive-react": "workspace:*",
     "@formily/shared": "workspace:*",
     "classnames": "^2.2.6",
-    "react-sticky-box": "^0.9.3",
-    "tslib": "^2.2.0"
+    "react-sticky-box": "^0.9.3"
   },
   "publishConfig": {
     "access": "public"

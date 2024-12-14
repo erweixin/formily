@@ -34,8 +34,7 @@
   "dependencies": {
     "@formily/reactive": "workspace:*",
     "@formily/shared": "workspace:*",
-    "@formily/validator": "workspace:*",
-    "tslib": "2.8.1"
+    "@formily/validator": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

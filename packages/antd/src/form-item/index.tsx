@@ -407,7 +407,6 @@ export const BaseItem: React.FC<React.PropsWithChildren<IFormItemProps>> = ({
 }
 
 // 适配
-//@ts-ignore
 export const FormItem: ComposeFormItem = connect(
   BaseItem,
   mapProps((props, field) => {

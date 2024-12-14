@@ -8,7 +8,7 @@ type ComposedCheckbox = React.FC<React.PropsWithChildren<CheckboxProps>> & {
   __ANT_CHECKBOX?: boolean
 }
 
-export const Checkbox: any = connect(
+export const Checkbox: ComposedCheckbox = connect(
   AntdCheckbox,
   mapProps({
     value: 'checked',

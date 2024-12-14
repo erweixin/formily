@@ -21,7 +21,7 @@
     "build:umd": "rollup --config",
     "build:types": "npm run build:types-vue2 && npm run build:types-vue3 && rimraf type-artefacts/**/*.js type-artefacts/**/**/*.js",
     "build:types-vue2": "tsc --project tsconfig.types.json --outDir type-artefacts/v2",
-    "build:types-vue3": "npx vue-demi-switch 3 vue3 && tsc --project tsconfig.types.json --outDir type-artefacts/v3 && tsc --project tsconfig.types.json --outDir type-artefacts/cur && npx vue-demi-switch 2",
+    "build:types-vue3": "npx vue-caster 3 vue3 && tsc --project tsconfig.types.json --outDir type-artefacts/v3 && tsc --project tsconfig.types.json --outDir type-artefacts/cur && npx vue-caster 2",
     "build:docs": "vuepress build docs"
   },
   "bin": {

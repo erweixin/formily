@@ -7,12 +7,12 @@ const vueEntry = process.argv[3] || 'vue'
 if (version == '2') {
   switchVersion(2)
   console.log(`[formily-vue] Switched types for Vue 2`)
-  exec(`npx vue-demi-switch 2 ${vueEntry}`)
+  exec(`npx vue-caster 2 ${vueEntry}`)
   console.log(`[vue-demi] Switched for Vue 2 (entry: "${vueEntry}")`)
 } else if (version == '3') {
   switchVersion(3)
   console.log(`[formily-vue] Switched types for Vue 3`)
-  exec(`npx vue-demi-switch 3 ${vueEntry}`)
+  exec(`npx vue-caster 3 ${vueEntry}`)
   console.log(`[vue-demi] Switched for Vue 3 (entry: "${vueEntry}")`)
 } else {
   console.warn(
