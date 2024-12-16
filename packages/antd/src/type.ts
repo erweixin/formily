@@ -4,6 +4,9 @@ import {
   FormPathPattern,
 } from '@formily/core'
 import { InputProps, ModalProps, SelectProps } from 'antd'
+import { ReactPropsWithChildren } from 'packages/reactive-react/esm'
+import Select from './select'
+import FormItem from './form-item'
 export type SchemaEnum<Message> = Array<
   | string
   | number
@@ -143,7 +146,8 @@ export type ComponentPropsMap = {
 }
 
 export type DecoratorPropsMap = {
-  Modal: ModalProps
+  // Modal: ModalProps
+  FormItem: GetProps<typeof FormItem>
 }
 
 export type ComponentNames = keyof ComponentPropsMap
@@ -328,16 +332,19 @@ const test: MyISchema = {
   'x-component-props': {
     placeholder: '',
   },
-  'x-decorator': 'Modal',
+  'x-decorator': 'FormItem',
+  'x-decorator-props': {
+    colon: true,
+  },
   properties: {
     a: {
       'x-component': 'Input',
       'x-component-props': {
         placeholder: '',
       },
-      'x-decorator': 'Modal',
+      'x-decorator': 'FormItem',
       'x-decorator-props': {
-        title: 132,
+        bordered: true,
       },
       items: {
         type: 'void',
@@ -345,14 +352,14 @@ const test: MyISchema = {
           a: {
             'x-component': 'ArrayCards.Addition',
             'x-component-props': {
-              title: 333,
+              title: 'add',
             },
           },
         },
       },
       properties: {
         s: {
-          'x-decorator': 'Modal',
+          'x-decorator': 'FormItem',
           'x-component': 'Input',
           'x-component-props': {
             // options: [],
@@ -366,3 +373,13 @@ const test: MyISchema = {
 
 // eslint-disable-next-line no-console
 console.log(test)
+
+type GetProps<T> = T extends React.FC<ReactPropsWithChildren<infer P>>
+  ? P
+  : never
+
+type A = GetProps<typeof Select>
+
+const t: A = {
+  options: [],
+}
